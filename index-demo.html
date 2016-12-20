@@ -13,7 +13,7 @@
 }
 
 </style>
-<svg width="960" height="600"></svg>
+<svg width="1920" height="1080"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
@@ -23,10 +23,10 @@ var svg = d3.select("svg"),
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 console.log("color", color);
-
+console.log("forceSimulation", d3.forceSimulation());
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
-    .force("charge", d3.forceManyBody())
+    .force("charge", d3.forceManyBody().strength(-500))
     .force("center", d3.forceCenter(width / 2, height / 2));
 console.log("simulation", simulation);
 d3.json("miserables.json", function(error, graph) {
@@ -41,10 +41,11 @@ d3.json("miserables.json", function(error, graph) {
   console.log("links", link);
   var node = svg.append("g")
       .attr("class", "nodes")
-    .selectAll("circle")
+    .selectAll("rect")
     .data(graph.nodes)
-    .enter().append("circle")
-      .attr("r", 5)
+    .enter().append("rect")
+      .attr("width", 50)
+      .attr("height", 25)
       .attr("fill", function(d) { return color(d.group); })
       .call(d3.drag()
           .on("start", dragstarted)
@@ -63,14 +64,14 @@ d3.json("miserables.json", function(error, graph) {
   console.log("simulation-links", simulation);
   function ticked() {
     link
-        .attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+        .attr("x1", function(d) { return d.source.x+25; })
+        .attr("y1", function(d) { return d.source.y+12; })
+        .attr("x2", function(d) { return d.target.x+25; })
+        .attr("y2", function(d) { return d.target.y+12; });
 
     node
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
+        .attr("x", function(d) { return d.x; })
+        .attr("y", function(d) { return d.y; });
   }
 });
 

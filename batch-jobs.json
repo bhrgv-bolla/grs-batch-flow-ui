@@ -1,9 +1,9 @@
 {
   "nodes": [
-    {"jobID": "JOB1", "group": 1, "borderType": "solid"},
-    {"jobID": "JOB2", "group": 2,  "borderType": "dottedPink"}
+    {"id": "JOB1", "group": 1, "borderType": "solid"},
+    {"id": "JOB2", "group": 2,  "borderType": "dottedPink"}
   ],
   "links": [
-    {"linkStart": "JOB1", "linkEnd": "JOB2", "styleOfLink": "dotted"}
+    {"source": "JOB1", "target": "JOB2", "styleOfLink": "dotted"}
   ]
 }

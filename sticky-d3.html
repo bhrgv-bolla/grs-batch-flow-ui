@@ -9,7 +9,7 @@
 
 .node {
   cursor: move;
-  fill: #ccc;
+  fill: skyblue;
   stroke: #000;
   stroke-width: 1.5px;
 }
@@ -40,7 +40,7 @@ var svg = d3.select("body").append("svg")
 
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
-
+//graph-d3
 d3.json("graph-d3.json", function(error, graph) {
   if (error) throw error;
 

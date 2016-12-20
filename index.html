@@ -13,7 +13,7 @@
 }
 
 </style>
-<svg width="1000" height="1000"></svg>
+<svg width="1920" height="1080"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 //file:///Users/admin/Desktop/projects/github/d3/grs-batch-flow-ui/index.html
@@ -45,7 +45,7 @@ d3.json("batch-jobs.json", function(error, graph) {
     .data(graph.nodes)
     .enter().append("rect")
       .attr("width", 50)
-      .attr("height", 100)
+      .attr("height", 25)
       .attr("fill", function(d) { return color(d.group); })
       .call(d3.drag()
           .on("start", dragstarted)
@@ -53,7 +53,7 @@ d3.json("batch-jobs.json", function(error, graph) {
           .on("end", dragended));
 
   node.append("title")
-      .text(function(d) { console.log("What's the d", d); return d.jobID; });
+      .text(function(d) { console.log("What's the d", d); return d.id; });
 
   simulation
       .nodes(graph.nodes)
@@ -64,10 +64,10 @@ d3.json("batch-jobs.json", function(error, graph) {
 
   function ticked() {
     link
-        .attr("x1", function(d) { return d.linkStart.x; })
-        .attr("y1", function(d) { return d.linkStart.y; })
-        .attr("x2", function(d) { return d.linkEnd.x; })
-        .attr("y2", function(d) { return d.linkEnd.y; });
+        .attr("x1", function(d) { return d.source.x+25; })
+        .attr("y1", function(d) { return d.source.y+12; })
+        .attr("x2", function(d) { return d.target.x+25; })
+        .attr("y2", function(d) { return d.target.y+12; });
 
     node
         .attr("x", function(d) { return d.x; })
