@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "restMongo": {
+        "module": "./server/plugins/mongo_rest/rest.js"
+      }
+  }
+}
