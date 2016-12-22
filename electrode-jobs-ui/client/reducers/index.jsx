@@ -1,4 +1,5 @@
 import {combineReducers} from "redux";
+import {reducer as formReducer} from "redux-form";
 
 const checkBox = (store, action) => {
   if (action.type === "TOGGLE_CHECK") {
@@ -26,5 +27,6 @@ const number = (store, action) => {
 
 export default combineReducers({
   checkBox,
-  number
+  number,
+  form: formReducer
 });

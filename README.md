@@ -25,3 +25,8 @@ https://bl.ocks.org/mbostock/3750558 (Sticky force )
 
 ### Event Reference
 https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+
+
+###FAQ's
+https://groups.google.com/forum/#!topic/d3-js/mKEDteMWpNM
+https://gist.github.com/insin/bbf116e8ea10ef38447b
