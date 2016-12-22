@@ -50,22 +50,7 @@ var addRoutesForLinks = (server) => {
   });
 };
 
-
-//Start the plugin definition
-
-const restMongo = {}
-
-
-
-//restMongo Define all the functions in here.
-restMongo.register = (server, options, next) => {
-  //GET request for testing
-  server.route({
-    method: 'GET',
-    path: '/check',
-    handler: (request, reply) => reply('yup! works')
-  });
-
+var addRoutesForNodes = (server) => {
   //add POST Method
   server.route({
     method: 'POST',
@@ -113,7 +98,26 @@ restMongo.register = (server, options, next) => {
       });
     }
   });
+};
 
+
+//Start the plugin definition
+
+const restMongo = {}
+
+
+
+//restMongo Define all the functions in here.
+restMongo.register = (server, options, next) => {
+  //GET request for testing
+  server.route({
+    method: 'GET',
+    path: '/check',
+    handler: (request, reply) => reply('yup! works')
+  });
+
+  //Adding routes for nodes
+  addRoutesForNodes(server);
   //Adding routes for manipulating links
   addRoutesForLinks(server);
 
