@@ -1,5 +1,7 @@
 "use strict";
 
+global.navigator = {userAgent: "all"};
+
 const SSRCaching = require("electrode-react-ssr-caching");
 
 process.on("SIGINT", () => {
