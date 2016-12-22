@@ -19,7 +19,7 @@ const supports = require("electrode-archetype-react-app/supports");
 
 var Mongoose = require('mongoose');
 //add connection ( For local mongo db for now. Change to repl set later.)
-Mongoose.connect('mongodb://localhost:27017/test');
+Mongoose.connect('mongodb://mongodb-replica-set-98399705-1-167418681.dev.mongodb.rbscm.dev.cloud.wal-mart.com:27017,mongodb-replica-set-98399705-3-167418687.dev.mongodb.rbscm.dev.cloud.wal-mart.com:27017,mongodb-replica-set-98399705-2-167418684.dev.mongodb.rbscm.dev.cloud.wal-mart.com:27017/test');
 
 
 
