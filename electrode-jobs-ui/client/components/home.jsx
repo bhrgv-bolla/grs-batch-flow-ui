@@ -8,33 +8,45 @@ import axios from "axios";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 var addJob = (e) => {
-  axios.post('/upsert-job',e)
-  .then(function (response) {
+  axios.post('/upsert-job', e).then(function(response) {
     console.log(response);
-  })
-  .catch(function(error) {
+  }).catch(function(error) {
     console.log(error);
   });
 };
 
+var getGraphData = () => axios.get('/getGraphData');
 
 class Home extends React.Component {
 
-  //  (data) => new Promise((resolve, reject)=> {
-  //  console.log(data);
-  //  resolve(addJob(data));
-  //});
+  constructor(props) {
+    super(props);
+    this.state = {
+      graph: {}
+    };
+  }
+
+  componentWillMount() {
+    console.log(this.state);
+
+  }
 
   render() {
-    const showResults = values =>
-  new Promise(resolve => {
-    var x = addJob(values);
-    console.log(x, values);
-    resolve();
-  });
+    const showResults = values => new Promise(resolve => {
+      var x = addJob(values);
+      console.log(x, values);
+      resolve();
+    });
     const data = require('json!./data.json');
     const props = this.props;
     const {checked, value} = props;
+    getGraphData().then(function(response) {
+      var graph = response.data;
+      this.setState(graph);
+      console.log("resolved");
+    }).catch(function(err) {
+      console.log(err);
+    });
     return (
       <MuiThemeProvider>
         <div>
@@ -42,7 +54,7 @@ class Home extends React.Component {
             <AddJobForm onSubmit={showResults}></AddJobForm>
           </div>
           <div>
-            <ForceFlowChart data={data}></ForceFlowChart>
+            <ForceFlowChart data={this.state.graph}></ForceFlowChart>
           </div>
         </div>
       </MuiThemeProvider>
@@ -56,9 +68,7 @@ Home.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return {
-    checked: state.checkBox.checked, value: state.number.value
-  };
+  return {checked: state.checkBox.checked, value: state.number.value};
 };
 
 const mapDispatchToProps = (dispatch) => {

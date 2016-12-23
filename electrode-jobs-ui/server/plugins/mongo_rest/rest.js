@@ -5,7 +5,7 @@
 Plugins are very simple to write.
 At their core they are an object with a register function that has the signature function (server, options, next). That register function then has an attributes object attached to it to provide hapi with some additional information about the plugin, such as name and version.
 **/
-
+const Promise = require("bluebird");
 //Import Models
 var batchFlowModels = require('../../models/batchFlow');
 var Job = batchFlowModels.Job;
@@ -120,6 +120,34 @@ restMongo.register = (server, options, next) => {
   addRoutesForNodes(server);
   //Adding routes for manipulating links
   addRoutesForLinks(server);
+
+  //Construct a grpah and return.
+  server.route({
+    method: 'GET',
+    path: '/getGraphData',
+    handler: (request, reply) => {
+      var graph = {};
+      var p1 = Job.find({}, function(err, jobs) {
+        if(!err) { //no error
+          graph.nodes = jobs;
+        } else { //on error
+          reply('Error while retreiving all jobs');
+        }
+      });
+      var p2 = Link.find({}, function(err, links) {
+        if(!err) { //no error
+          graph.links = links;
+        } else { //on error
+          reply('Error while retreiving all links');
+        }
+      });
+      Promise.all([p1, p2]).then(function(response){
+        reply(graph);
+      }).catch(function(error){
+        reply('error retreiving data');
+      });
+    }
+  })
 
   next();
 };
