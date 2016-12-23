@@ -20,21 +20,18 @@ var addJob = (e) => {
 
 class Home extends React.Component {
 
-
-
-
   //  (data) => new Promise((resolve, reject)=> {
   //  console.log(data);
   //  resolve(addJob(data));
   //});
 
   render() {
-    var handleSubmit = new Promise(resolve => {
-      setTimeout(() => {  // simulate server latency
-        window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
-        resolve()
-      }, 500)
-    });
+    const showResults = values =>
+  new Promise(resolve => {
+    var x = addJob(values);
+    console.log(x, values);
+    resolve();
+  });
     const data = require('json!./data.json');
     const props = this.props;
     const {checked, value} = props;
@@ -42,7 +39,7 @@ class Home extends React.Component {
       <MuiThemeProvider>
         <div>
           <div>
-            <AddJobForm onSubmit={this.handleSubmit.bind(this)}></AddJobForm>
+            <AddJobForm onSubmit={showResults}></AddJobForm>
           </div>
           <div>
             <ForceFlowChart data={data}></ForceFlowChart>

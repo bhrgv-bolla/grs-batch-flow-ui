@@ -15,32 +15,27 @@ const validate = values => {
   return errors;
 };
 
+const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+  <TextField hintText={label}
+    floatingLabelText={label}
+    errorText={touched && error}
+    {...input}
+    {...custom}
+  />
+);
+
 class AddJobForm extends React.Component {
 
-  handleFormSubmit(data) {
-    console.log(data, "asdsad");
-    this.props.onSubmit(data);
-  }
   render(){
     const { handleSubmit } = this.props;
-    console.log(this.props);
+    //console.log(this.props);
     return(
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form onSubmit={handleSubmit}>
         <div>
-          <Field name="id" component={id =>
-           <TextField hintText = "JW@@US"
-             floatingLabelText="jobID"
-             errorText = {id.touched && id.error}
-           />
-           }/>
+          <Field name="id" component={renderTextField} label="Job Name"/>
         </div>
         <div>
-          <Field name="group" component={group =>
-           <TextField hintText = "demand-segmentation"
-             floatingLabelText="group"
-             errorText = {group.touched && group.error}
-           />
-           }/>
+          <Field name="group" component={renderTextField} label="Last Name"/>
         </div>
         <div>
           <RaisedButton type="submit" primary={true} label="submit"/>
