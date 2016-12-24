@@ -144,6 +144,7 @@ restMongo.register = (server, options, next) => {
       Promise.all([p1, p2]).then(function(response){
         reply(graph);
       }).catch(function(error){
+        console.log(erorr);
         reply('error retreiving data');
       });
     }

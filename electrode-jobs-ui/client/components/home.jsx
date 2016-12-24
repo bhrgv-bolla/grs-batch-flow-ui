@@ -4,8 +4,10 @@ import Notifications from "react-notify-toast";
 import {toggleCheck, incNumber, decNumber} from "../actions";
 import ForceFlowChart from "./batchFlow";
 import AddJobForm from "./forms/addJobForm";
-import axios from "axios";
+import AddLinkForm from "./forms/addLinkForm";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import axios from "axios";
+import Paper from 'material-ui/Paper';
 
 var addJob = (e) => {
   axios.post('/upsert-job', e).then(function(response) {
@@ -15,24 +17,30 @@ var addJob = (e) => {
   });
 };
 
-var getGraphData = () => axios.get('/getGraphData');
+var addLink = (e) => axios.post('/upsert-link', e).then(function(response) {
+    console.log(response);
+  }).catch(function(error) {
+    console.log(error);
+  });
+
+  const style = {
+    height: 350,
+    width: "90%",
+    margin: "2%",
+    textAlign: 'center',
+    display: 'inline-block'
+  };
+
 
 class Home extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      graph: {}
-    };
-  }
-
-  componentWillMount() {
-    console.log(this.state);
-
+  componentDidMount() {
+    var component = this;
+    console.log("state is",this.state);
   }
 
   render() {
-    const showResults = values => new Promise(resolve => {
+    const sendJob = values => new Promise(resolve => {
       var x = addJob(values);
       console.log(x, values);
       resolve();
@@ -40,23 +48,17 @@ class Home extends React.Component {
     const data = require('json!./data.json');
     const props = this.props;
     const {checked, value} = props;
-    getGraphData().then(function(response) {
-      var graph = response.data;
-      this.setState(graph);
-      console.log("resolved");
-    }).catch(function(err) {
-      console.log(err);
-    });
     return (
       <MuiThemeProvider>
         <div>
           <div>
-            <AddJobForm onSubmit={showResults}></AddJobForm>
+            <AddJobForm onSubmit={sendJob}></AddJobForm>
+            <AddLinkForm onSubmit={addLink}></AddLinkForm>
           </div>
           <div>
-            <ForceFlowChart data={this.state.graph}></ForceFlowChart>
+            <ForceFlowChart source={"/getGraphData"}></ForceFlowChart>
           </div>
-        </div>
+          </div>
       </MuiThemeProvider>
     );
   }

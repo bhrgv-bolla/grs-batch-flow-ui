@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 
 const validate = values => {
   const errors = {};
-  const requiredFields = ['id', 'group'];
+  const requiredFields = ['source', 'target'];
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = 'Required';
@@ -34,20 +34,20 @@ const style = {
   "verticalAlign": "top"
 }
 
-class AddJobForm extends React.Component {
+class AddLinkForm extends React.Component {
 
   render() {
     const {handleSubmit} = this.props;
     //console.log(this.props);
     return (
       <Paper style={style} zDepth={5} rounded={true}>
-        <h3>Add Job Form</h3>
+        <h3>Add Link Form</h3>
         <form onSubmit={handleSubmit}>
           <div>
-            <Field name="id" component={renderTextField} label="Job Name"/>
+            <Field name="source" component={renderTextField} label="Source JobID"/>
           </div>
           <div>
-            <Field name="group" component={renderTextField} label="Job Group"/>
+            <Field name="target" component={renderTextField} label="Target JobID"/>
           </div>
           <div>
             <RaisedButton type="submit" primary={true} label="submit"/>
@@ -58,4 +58,4 @@ class AddJobForm extends React.Component {
   }
 }
 
-export default reduxForm({form: 'AddJobForm', validate})(AddJobForm);
+export default reduxForm({form: 'AddLinkForm', validate})(AddLinkForm);
