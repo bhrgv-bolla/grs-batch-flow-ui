@@ -10,6 +10,7 @@ const Promise = require("bluebird");
 var batchFlowModels = require('../../models/batchFlow');
 var Job = batchFlowModels.Job;
 var Link = batchFlowModels.Link;
+var Feedback = batchFlowModels.Feedback;
 
 var addRoutesForLinks = (server) => {
   //GET request for testing
@@ -100,6 +101,26 @@ var addRoutesForNodes = (server) => {
   });
 };
 
+var addRoutesForFeedback = (server) => {
+  server.route({
+    method: 'POST',
+    path: '/postFeedback',
+    handler: (request, reply) => {
+      var feedback = new Feedback();
+      console.log(feedback, request.payload);
+      feedback.windowLocation = request.payload.windowLocation;
+      feedback.reportedBy = request.payload.reportedBy;
+      feedback.feedbackText = request.payload.feedbackText;
+      feedback.save(function (err){
+        if(!err){ //no error
+          reply(feedback);//.created('/check')
+        } else { //on error
+          reply('Error saving new job');
+        }
+      });
+    }
+  });
+};
 
 //Start the plugin definition
 
@@ -120,6 +141,8 @@ restMongo.register = (server, options, next) => {
   addRoutesForNodes(server);
   //Adding routes for manipulating links
   addRoutesForLinks(server);
+
+  addRoutesForFeedback(server);
 
   //Construct a grpah and return.
   server.route({

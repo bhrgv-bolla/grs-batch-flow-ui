@@ -31,7 +31,10 @@ export default class ForceFlowChart extends React.Component {
     var svg = d3.select(this.refs.hook).append('svg:svg').attr('viewBox', '0 0 2000 2000').attr('preserveAspectRatio', 'xMinYMin').attr('xmlns', 'http://www.w3.org/2000/svg').attr('version', '1.1');
 
     //Add a marker Just to make the graph directed.
-    svg.append("defs").append("marker").attr("id", "arrow").attr("viewBox", "0 -5 10 10").attr("refX", 10).attr("refY", 0).attr("markerWidth", 5).attr("markerHeight", 5).attr("fill", "#e8120c").attr("stroke", "#e8120c").attr("orient", "auto").append("svg:path").attr("d", "M0,-5L10,0L0,5");
+    svg.append("defs").append("marker").attr("id", "arrow")
+    .attr("viewBox", "0 -5 10 10").attr("refX", 10).attr("refY", 0)
+    .attr("markerWidth", 5).attr("markerHeight", 5).attr("fill", "#e8120c")
+    .attr("stroke", "#e8120c").attr("orient", "auto").append("svg:path").attr("d", "M0,-5L10,0L0,5");
 
     var simulation = d3.forceSimulation().force("link", d3.forceLink().id(function(d) {
       return d.id;
@@ -43,8 +46,9 @@ export default class ForceFlowChart extends React.Component {
       return "#000000";
     }).attr("marker-end", "url(#arrow)");
 
-    var node = svg.append("g").attr("class", "nodes").selectAll("rect").data(data.nodes).enter().append("rect").attr("width", rectWidth).attr("height", rectHeight).attr("fill", function(d) {
-      return "#fff";
+    var node = svg.append("g").attr("class", "nodes").selectAll("rect").data(data.nodes).enter()
+    .append("rect").attr("width", rectWidth).attr("height", rectHeight).attr("fill", function(d) {
+      return d.color?d.color:"#fff";
     }).attr("stroke-width", function(d) {
       return 1;
     }).attr("stroke", function(d) {
@@ -54,8 +58,12 @@ export default class ForceFlowChart extends React.Component {
     }).on("drag", function(d) {
       dragged(d, simulation)
     }).on("end", function(d) {
-      dragEnd(d, simulation)
-    }));
+      dragEnd(d, simulation, this)
+    })).on("click", function(d){
+      toggleNodeLock(d, this);
+    }).on("dblclick", function(d){
+      showJobInfo(d);
+    });
 
     //node.append("title").text(function(d){return d.id;});
 
@@ -66,10 +74,11 @@ export default class ForceFlowChart extends React.Component {
     console.log(data.nodes);
     //Adding text.attr("dx", function(d) {console.log(d);return d.x;})
     //.attr("dy", ".35em")
-    var labels = svg.append("g").attr("class", "labels").selectAll("text").data(data.nodes).enter().append("text").text(function(d) {
+    var labels = svg.append("g").attr("class", "labels").selectAll("text").data(data.nodes).enter()
+    .append("text").text(function(d) {
       console.log(d);
       return "( " + d.id + " )";
-    }).attr("font-family", "sans-serif").attr("font-size", "20px").attr("fill", "blue").attr("x", function(d) {
+    }).attr("font-family", "sans-serif").attr("font-size", "20px").attr("fill", "rgb(0, 0, 0)").attr("x", function(d) {
       return d.x;
     }).attr("y", function(d) {
       return d.y;
@@ -222,16 +231,49 @@ var dragStart = (d, simulation) => {
     simulation.alphaTarget(0.3).restart();
   d.fx = d.x;
   d.fy = d.y;
+  console.log(d.fx,d.fy);
 };
 
 var dragged = (d, simulation) => {
   d.fx = d3.event.x;
   d.fy = d3.event.y;
+  console.log(d.fx,d.fy);
 };
 
-var dragEnd = (d, simulation) => {
+var dragEnd = (d, simulation, _this) => {
+  console.log(_this, simulation);
   if (!d3.event.active)
     simulation.alphaTarget(0);
+  d3.select(_this).attr("fill", "#ff0000");
+  // console.log(d, d3.event, _this);
+  // d.fx = null;
+  // d.fy = null;
+  console.log(d.fx,d.fy);
+};
+
+var toggleNodeLock = (d, _this) => {
+  console.log("enter toggle node lock", d, _this);
+  if(!d.fx && !d.fy){
+    lockNode(d, _this);
+  } else {
+    relaxNode(d, _this);
+  }
+};
+
+var lockNode = (d, _this) => {
+  console.log("enter lock node");
+  d3.select(_this).attr("fill", "#ff0000");
+  d.fx = d.x;
+  d.fy = d.y;
+};
+
+var relaxNode = (d, _this) => {
+  console.log(d, _this);
+  d3.select(_this).attr("fill", "#ffffff");
   d.fx = null;
   d.fy = null;
+};
+
+var showJobInfo = (d) => {
+  window.alert(JSON.stringify(d));
 };

@@ -15,14 +15,22 @@ var linkSchema = new Schema({
 });
 linkSchema.index({source:1, target:1}, {unique: true}); //Add a schema.
 
+var feedbackSchema = new Schema({
+  windowLocation : {type: String, required: false, trim: true},
+  reportedBy : {type: String, required: false, trim: true},
+  feedbackText : {type: String, required: false, trim: true}
+});
+
 var job = Mongoose.model('grs_job', jobSchema);
 var link = Mongoose.model('link_jobs', linkSchema);
+var feedback = Mongoose.model('feedback', feedbackSchema);
 
 
 // Export the Job and Link model.
 module.exports = {
   Job : job,
-  Link : link
+  Link : link,
+  Feedback : feedback
 };
 
 // {
