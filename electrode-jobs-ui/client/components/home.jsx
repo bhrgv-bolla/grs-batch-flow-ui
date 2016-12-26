@@ -9,12 +9,14 @@ import FeedbackForm from "./forms/feedbackForm";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import axios from "axios";
 import Paper from 'material-ui/Paper';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
 
 var addJob = (e) => axios.post('/upsert-job', e).then(function(response) {
-    console.log(response);
-  }).catch(function(error) {
-    console.log(error);
-  });
+  console.log(response);
+}).catch(function(error) {
+  console.log(error);
+});
 
 var addLink = (e) => axios.post('/upsert-link', e).then(function(response) {
   console.log(response);
@@ -36,12 +38,25 @@ const style = {
   display: 'inline-block'
 };
 
+
+
 class Home extends React.Component {
 
   componentDidMount() {
-    var component = this;
     console.log("state is", this.state);
   }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      slideIndex: 0
+    };
+  }
+
+  handleChange(value) {
+    console.log(this);
+    this.setState({slideIndex: value});
+  };
 
   render() {
     const data = require('json!./data.json');
@@ -51,9 +66,22 @@ class Home extends React.Component {
       <MuiThemeProvider>
         <div>
           <div>
-            <AddJobForm onSubmit={addJob}></AddJobForm>
-            <AddLinkForm onSubmit={addLink}></AddLinkForm>
-            <FeedbackForm onSubmit={postFeedback}></FeedbackForm>
+            <Tabs onChange={this.handleChange} value={this.state.slideIndex}>
+              <Tab label="Job+" value={0}/>
+              <Tab label="Link+" value={1}/>
+              <Tab label="Feedback" value={2}/>
+            </Tabs>
+            <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange}>
+              <div>
+                <AddJobForm onSubmit={addJob}></AddJobForm>
+              </div>
+              <div>
+                <AddLinkForm onSubmit={addLink}></AddLinkForm>
+              </div>
+              <div>
+                <FeedbackForm onSubmit={postFeedback}></FeedbackForm>
+              </div>w
+            </SwipeableViews>
           </div>
           <div>
             <ForceFlowChart source={"/getGraphData"}></ForceFlowChart>
