@@ -42,6 +42,7 @@ const style = {
 
 class Home extends React.Component {
 
+
   componentDidMount() {
     console.log("state is", this.state);
   }
@@ -62,16 +63,17 @@ class Home extends React.Component {
     const data = require('json!./data.json');
     const props = this.props;
     const {checked, value} = props;
+
     return (
       <MuiThemeProvider>
         <div>
           <div>
-            <Tabs onChange={this.handleChange} value={this.state.slideIndex}>
-              <Tab label="Job+" value={0}/>
-              <Tab label="Link+" value={1}/>
+            <Tabs onChange={this.handleChange.bind(this)} value={this.state.slideIndex}>
+              <Tab label="Add Job" value={0}/>
+              <Tab label="Add Link" value={1}/>
               <Tab label="Feedback" value={2}/>
             </Tabs>
-            <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange}>
+            <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange.bind(this)}>
               <div>
                 <AddJobForm onSubmit={addJob}></AddJobForm>
               </div>
@@ -80,7 +82,7 @@ class Home extends React.Component {
               </div>
               <div>
                 <FeedbackForm onSubmit={postFeedback}></FeedbackForm>
-              </div>w
+              </div>
             </SwipeableViews>
           </div>
           <div>

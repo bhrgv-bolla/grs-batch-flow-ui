@@ -26,9 +26,10 @@ const renderTextField = ({
 }) => (<TextField hintText={label} floatingLabelText={label} errorText={touched && error} {...input} {...custom}/>);
 
 const style = {
-  height: 370,
-  width: "48%",
+  // height: 370,
+  width: "98%",
   margin: "1%",
+  padding: "1%",
   textAlign: 'center',
   display: 'inline-block',
   "verticalAlign": "top"
