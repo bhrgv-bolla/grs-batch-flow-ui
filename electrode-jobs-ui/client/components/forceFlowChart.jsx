@@ -9,6 +9,7 @@ var rectHeight = 50;
 const style = {
   width: "98%",
   margin: "1%",
+  padding: "2%",
   textAlign: 'center',
   display: 'inline-block'
 };
@@ -120,7 +121,7 @@ export default class ForceFlowChart extends React.Component {
     // Once D3 has the reference it should be able to manipulate the react's virtual DOM.
     console.log("render Batch flow props", this.props);
     return (
-      <Paper style={style} zDepth={5} rounded={true}>
+      <Paper style={style} zDepth={2} rounded={true}>
         <h3>Batch Flow Visualization</h3>
         <div ref='hook'/>
       </Paper>

@@ -30,12 +30,19 @@ var postFeedback = (e) => axios.post('/postFeedback', e).then(function(response)
   console.log(error);
 });
 
+
+  //height: 350,
+
 const style = {
-  height: 350,
   width: "90%",
   margin: "2%",
   textAlign: 'center',
   display: 'inline-block'
+};
+
+const style2 = {
+  height: "auto !important",
+  // "overflow-y": "overlay"
 };
 
 
@@ -73,14 +80,14 @@ class Home extends React.Component {
               <Tab label="Add Link" value={1}/>
               <Tab label="Feedback" value={2}/>
             </Tabs>
-            <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange.bind(this)}>
-              <div>
+            <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange.bind(this)} animateHeight={true} style={style2}>
+              <div style={style2}>
                 <AddJobForm onSubmit={addJob}></AddJobForm>
               </div>
-              <div>
+              <div style={style2}>
                 <AddLinkForm onSubmit={addLink}></AddLinkForm>
               </div>
-              <div>
+              <div style={style2}>
                 <FeedbackForm onSubmit={postFeedback}></FeedbackForm>
               </div>
             </SwipeableViews>

@@ -25,11 +25,13 @@ const renderTextField = ({
   ...custom
 }) => (<TextField hintText={label} floatingLabelText={label} errorText={touched && error} {...input} {...custom}/>);
 
-const style = {
+
   // height: 370,
+
+const style = {
   width: "98%",
   margin: "1%",
-  padding: "1%",
+  padding: "4%",
   textAlign: 'center',
   display: 'inline-block',
   "verticalAlign": "top"
@@ -41,7 +43,7 @@ class FeedbackForm extends React.Component {
     const {handleSubmit} = this.props;
     //console.log(this.props);
     return (
-      <Paper style={style} zDepth={5} rounded={true}>
+      <Paper style={style} zDepth={2} rounded={true}>
         <h3>Post Feedback</h3>
         <form onSubmit={handleSubmit}>
           <div>
