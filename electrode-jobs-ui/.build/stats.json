@@ -2,14 +2,14 @@
   "assetsByChunkName": {
     "main": [
       "main.bundle.dev.js",
-      "style.2d79b23dfb1e24f9e5bf.css",
+      "style.0162acfef104bbbb1c75.css",
       "main.style.css",
       "main.bundle.dev.js.map",
-      "style.2d79b23dfb1e24f9e5bf.css.map",
+      "style.0162acfef104bbbb1c75.css.map",
       "main.style.css.map"
     ],
     "sw-registration": [
-      "2d79b23dfb1e24f9e5bf.sw-registration.js",
+      "0162acfef104bbbb1c75.sw-registration.js",
       "b577882cb3352307457e.sw-registration.js",
       "b577882cb3352307457e.sw-registration.js.map"
     ]
@@ -316,16 +316,17 @@
     },
     {
       "name": "main.bundle.dev.js",
-      "size": 2288450,
+      "size": 2288451,
       "chunks": [
         0
       ],
       "chunkNames": [
         "main"
-      ]
+      ],
+      "emitted": true
     },
     {
-      "name": "2d79b23dfb1e24f9e5bf.sw-registration.js",
+      "name": "0162acfef104bbbb1c75.sw-registration.js",
       "size": 2345,
       "chunks": [
         1
@@ -336,7 +337,7 @@
       "emitted": true
     },
     {
-      "name": "style.2d79b23dfb1e24f9e5bf.css",
+      "name": "style.0162acfef104bbbb1c75.css",
       "size": 189,
       "chunks": [
         0
@@ -354,6 +355,17 @@
       "chunkNames": [
         "main"
       ]
+    },
+    {
+      "name": "main.bundle.dev.js.map",
+      "size": 2767068,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": true
     },
     {
       "name": "b577882cb3352307457e.sw-registration.js",
@@ -378,17 +390,7 @@
       "emitted": false
     },
     {
-      "name": "main.bundle.dev.js.map",
-      "size": 2767067,
-      "chunks": [
-        0
-      ],
-      "chunkNames": [
-        "main"
-      ]
-    },
-    {
-      "name": "style.2d79b23dfb1e24f9e5bf.css.map",
+      "name": "style.0162acfef104bbbb1c75.css.map",
       "size": 107,
       "chunks": [
         0
