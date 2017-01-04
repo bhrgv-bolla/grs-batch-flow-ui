@@ -2,16 +2,16 @@
   "assetsByChunkName": {
     "main": [
       "main.bundle.dev.js",
-      "style.b577882cb3352307457e.css",
+      "style.2d79b23dfb1e24f9e5bf.css",
       "main.style.css",
       "main.bundle.dev.js.map",
-      "style.b577882cb3352307457e.css.map",
+      "style.2d79b23dfb1e24f9e5bf.css.map",
       "main.style.css.map"
     ],
     "sw-registration": [
+      "2d79b23dfb1e24f9e5bf.sw-registration.js",
       "b577882cb3352307457e.sw-registration.js",
-      "cd0bf379b69ab4f723c9.sw-registration.js",
-      "cd0bf379b69ab4f723c9.sw-registration.js.map"
+      "b577882cb3352307457e.sw-registration.js.map"
     ]
   },
   "assets": [
@@ -30,15 +30,15 @@
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-76x76.png",
-      "size": 5631,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-72x72.png",
+      "size": 4922,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-72x72.png",
-      "size": 4922,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-76x76.png",
+      "size": 5631,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
@@ -51,15 +51,15 @@
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-114x114.png",
-      "size": 10648,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-144x144.png",
+      "size": 15541,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-144x144.png",
-      "size": 15541,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-114x114.png",
+      "size": 10648,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
@@ -205,15 +205,15 @@
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-640x1096.png",
-      "size": 159214,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-640x920.png",
+      "size": 158116,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-640x920.png",
-      "size": 158116,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-640x1096.png",
+      "size": 159214,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
@@ -226,15 +226,15 @@
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-750x1294.png",
-      "size": 201239,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-768x1004.png",
+      "size": 206992,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-768x1004.png",
-      "size": 206992,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-750x1294.png",
+      "size": 201239,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
@@ -316,7 +316,7 @@
     },
     {
       "name": "main.bundle.dev.js",
-      "size": 2288316,
+      "size": 2288450,
       "chunks": [
         0
       ],
@@ -325,7 +325,7 @@
       ]
     },
     {
-      "name": "b577882cb3352307457e.sw-registration.js",
+      "name": "2d79b23dfb1e24f9e5bf.sw-registration.js",
       "size": 2345,
       "chunks": [
         1
@@ -336,7 +336,7 @@
       "emitted": true
     },
     {
-      "name": "style.b577882cb3352307457e.css",
+      "name": "style.2d79b23dfb1e24f9e5bf.css",
       "size": 189,
       "chunks": [
         0
@@ -356,7 +356,7 @@
       ]
     },
     {
-      "name": "cd0bf379b69ab4f723c9.sw-registration.js",
+      "name": "b577882cb3352307457e.sw-registration.js",
       "size": 2410,
       "chunks": [
         1
@@ -367,7 +367,7 @@
       "emitted": false
     },
     {
-      "name": "cd0bf379b69ab4f723c9.sw-registration.js.map",
+      "name": "b577882cb3352307457e.sw-registration.js.map",
       "size": 3731,
       "chunks": [
         1
@@ -379,7 +379,7 @@
     },
     {
       "name": "main.bundle.dev.js.map",
-      "size": 2766750,
+      "size": 2767067,
       "chunks": [
         0
       ],
@@ -388,7 +388,7 @@
       ]
     },
     {
-      "name": "style.b577882cb3352307457e.css.map",
+      "name": "style.2d79b23dfb1e24f9e5bf.css.map",
       "size": 107,
       "chunks": [
         0
