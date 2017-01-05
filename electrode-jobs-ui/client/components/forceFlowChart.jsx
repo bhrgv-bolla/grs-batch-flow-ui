@@ -2,6 +2,9 @@ import React, {PropTypes} from 'react';
 import * as d3 from 'd3';
 import axios from "axios";
 import Paper from 'material-ui/Paper';
+import Dialog from 'material-ui/Dialog';
+import RaisedButton from 'material-ui/RaisedButton';
+import styles from '../styles/base.css';
 
 var rectWidth = 150;
 var rectHeight = 50;
@@ -16,11 +19,18 @@ const style = {
   display: 'inline-block'
 };
 
+var _this; //Easy way to use functions! ;)
+
+
 export default class ForceFlowChart extends React.Component {
 
   constructor(props) {
+    console.log(styles);
     super(props);
+    _this = this;
     this.state = {
+      open: false,
+      currentJobInfo: "None Selected",
       graph: {
         nodes: [],
         links: []
@@ -28,6 +38,22 @@ export default class ForceFlowChart extends React.Component {
     };
   }
 
+  //for the modal
+  handleOpen(jobInfo) {
+    _this.setState({open: true, currentJobInfo: jobInfo});
+  };
+
+  handleClose() {
+    _this.setState({open: false, currentJobInfo: "None Selected"});
+  };
+
+  showJobInfo(d) {
+    _this.handleOpen(JSON.stringify(d));
+    // window.alert(JSON.stringify(d));
+  };
+
+
+  //Visualization stuff starts here
   startVisualization(data) {
     var svg = d3.select(this.refs.hook).append('svg:svg').attr('viewBox', '0 0 2000 2000').attr('preserveAspectRatio', 'xMinYMin').attr('xmlns', 'http://www.w3.org/2000/svg').attr('version', '1.1');
 
@@ -40,6 +66,8 @@ export default class ForceFlowChart extends React.Component {
       return 0.6 * rectWidth;
     }).iterations(16)).force("y", d3.forceY(10)).force("x", d3.forceX(10));
     //.strength(-800).theta(0).distanceMax(1000)
+
+
     var link = svg.append("g").attr("class", "links").selectAll("line").data(data.links).enter().append("line").attr("stroke-width", function(d) {
       return 2;
     }).attr("stroke", function(d) {
@@ -63,7 +91,7 @@ export default class ForceFlowChart extends React.Component {
     })).on("click", function(d) {
       toggleNodeLock(d, this);
     }).on("dblclick", function(d) {
-      showJobInfo(d);
+      _this.showJobInfo(d);
     });
 
     //node.append("title").text(function(d){return d.id;});
@@ -119,10 +147,37 @@ export default class ForceFlowChart extends React.Component {
     // The render should have a dom element that will be passed to D3 as a reference
     // Once D3 has the reference it should be able to manipulate the react's virtual DOM.
     console.log("render Batch flow props", this.props);
+    const actions = [
+      <RaisedButton
+        label="Edit"
+        primary={true}
+        onTouchTap={_this.handleClose}
+        className={styles.buttonStyle}
+      />,
+      <RaisedButton
+        label="Close"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={_this.handleClose}
+        className={styles.buttonStyle}
+      />,
+    ];
+
     return (
       <Paper style={style} zDepth={2} rounded={true}>
-        <h3>Batch Flow Visualization</h3>
+        <h3>Batch Flow Viz.</h3>
         <div ref='hook'/>
+        <Dialog
+            title="ADDITIONAL JOB INFO"
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={_this.handleClose}
+            autoScrollBodyContent={true}
+            titleClassName={styles.titleText}
+          >
+          {this.state.currentJobInfo}
+        </Dialog>
       </Paper>
     );
   }
@@ -276,8 +331,4 @@ var relaxNode = (d, _this) => {
   d3.select(_this).attr("fill", "#ffffff");
   d.fx = null;
   d.fy = null;
-};
-
-var showJobInfo = (d) => {
-  window.alert(JSON.stringify(d));
 };

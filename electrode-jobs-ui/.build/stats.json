@@ -2,16 +2,16 @@
   "assetsByChunkName": {
     "main": [
       "main.bundle.dev.js",
-      "style.ed89cf76dafbf8bcc2ac.css",
+      "style.2e08cd5af8e28d323ca7.css",
       "main.style.css",
       "main.bundle.dev.js.map",
-      "style.ed89cf76dafbf8bcc2ac.css.map",
+      "style.2e08cd5af8e28d323ca7.css.map",
       "main.style.css.map"
     ],
     "sw-registration": [
-      "ed89cf76dafbf8bcc2ac.sw-registration.js",
-      "0162acfef104bbbb1c75.sw-registration.js",
-      "0162acfef104bbbb1c75.sw-registration.js.map"
+      "2e08cd5af8e28d323ca7.sw-registration.js",
+      "51c5e74389d85068f9e0.sw-registration.js",
+      "51c5e74389d85068f9e0.sw-registration.js.map"
     ]
   },
   "assets": [
@@ -51,15 +51,15 @@
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-144x144.png",
-      "size": 15541,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-114x114.png",
+      "size": 10648,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-114x114.png",
-      "size": 10648,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-icon-144x144.png",
+      "size": 15541,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
@@ -205,15 +205,15 @@
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-640x920.png",
-      "size": 158116,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-640x1096.png",
+      "size": 159214,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-640x1096.png",
-      "size": 159214,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/apple-touch-startup-image-640x920.png",
+      "size": 158116,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
@@ -268,15 +268,15 @@
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/firefox_app_60x60.png",
-      "size": 5344,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/firefox_app_128x128.png",
+      "size": 16347,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/firefox_app_128x128.png",
-      "size": 16347,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/firefox_app_60x60.png",
+      "size": 5344,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
@@ -316,7 +316,7 @@
     },
     {
       "name": "main.bundle.dev.js",
-      "size": 2288761,
+      "size": 2324883,
       "chunks": [
         0
       ],
@@ -325,7 +325,7 @@
       ]
     },
     {
-      "name": "ed89cf76dafbf8bcc2ac.sw-registration.js",
+      "name": "2e08cd5af8e28d323ca7.sw-registration.js",
       "size": 2345,
       "chunks": [
         1
@@ -336,8 +336,8 @@
       "emitted": true
     },
     {
-      "name": "style.ed89cf76dafbf8bcc2ac.css",
-      "size": 189,
+      "name": "style.2e08cd5af8e28d323ca7.css",
+      "size": 543,
       "chunks": [
         0
       ],
@@ -347,7 +347,7 @@
     },
     {
       "name": "main.style.css",
-      "size": 173,
+      "size": 527,
       "chunks": [
         0
       ],
@@ -356,7 +356,7 @@
       ]
     },
     {
-      "name": "0162acfef104bbbb1c75.sw-registration.js",
+      "name": "51c5e74389d85068f9e0.sw-registration.js",
       "size": 2410,
       "chunks": [
         1
@@ -367,7 +367,7 @@
       "emitted": false
     },
     {
-      "name": "0162acfef104bbbb1c75.sw-registration.js.map",
+      "name": "51c5e74389d85068f9e0.sw-registration.js.map",
       "size": 3731,
       "chunks": [
         1
@@ -379,7 +379,7 @@
     },
     {
       "name": "main.bundle.dev.js.map",
-      "size": 2767789,
+      "size": 2810691,
       "chunks": [
         0
       ],
@@ -388,7 +388,7 @@
       ]
     },
     {
-      "name": "style.ed89cf76dafbf8bcc2ac.css.map",
+      "name": "style.2e08cd5af8e28d323ca7.css.map",
       "size": 107,
       "chunks": [
         0
