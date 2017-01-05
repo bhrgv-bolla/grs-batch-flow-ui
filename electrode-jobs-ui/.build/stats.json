@@ -2,16 +2,16 @@
   "assetsByChunkName": {
     "main": [
       "main.bundle.dev.js",
-      "style.0162acfef104bbbb1c75.css",
+      "style.ed89cf76dafbf8bcc2ac.css",
       "main.style.css",
       "main.bundle.dev.js.map",
-      "style.0162acfef104bbbb1c75.css.map",
+      "style.ed89cf76dafbf8bcc2ac.css.map",
       "main.style.css.map"
     ],
     "sw-registration": [
+      "ed89cf76dafbf8bcc2ac.sw-registration.js",
       "0162acfef104bbbb1c75.sw-registration.js",
-      "b577882cb3352307457e.sw-registration.js",
-      "b577882cb3352307457e.sw-registration.js.map"
+      "0162acfef104bbbb1c75.sw-registration.js.map"
     ]
   },
   "assets": [
@@ -268,15 +268,15 @@
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/firefox_app_128x128.png",
-      "size": 16347,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/firefox_app_60x60.png",
+      "size": 5344,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
     },
     {
-      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/firefox_app_60x60.png",
-      "size": 5344,
+      "name": "icons-2b7ac2d4ff91cca5b9c8e742eda58b24/firefox_app_128x128.png",
+      "size": 16347,
       "chunks": [],
       "chunkNames": [],
       "emitted": false
@@ -316,17 +316,16 @@
     },
     {
       "name": "main.bundle.dev.js",
-      "size": 2288451,
+      "size": 2288761,
       "chunks": [
         0
       ],
       "chunkNames": [
         "main"
-      ],
-      "emitted": true
+      ]
     },
     {
-      "name": "0162acfef104bbbb1c75.sw-registration.js",
+      "name": "ed89cf76dafbf8bcc2ac.sw-registration.js",
       "size": 2345,
       "chunks": [
         1
@@ -337,7 +336,7 @@
       "emitted": true
     },
     {
-      "name": "style.0162acfef104bbbb1c75.css",
+      "name": "style.ed89cf76dafbf8bcc2ac.css",
       "size": 189,
       "chunks": [
         0
@@ -357,18 +356,7 @@
       ]
     },
     {
-      "name": "main.bundle.dev.js.map",
-      "size": 2767068,
-      "chunks": [
-        0
-      ],
-      "chunkNames": [
-        "main"
-      ],
-      "emitted": true
-    },
-    {
-      "name": "b577882cb3352307457e.sw-registration.js",
+      "name": "0162acfef104bbbb1c75.sw-registration.js",
       "size": 2410,
       "chunks": [
         1
@@ -379,7 +367,7 @@
       "emitted": false
     },
     {
-      "name": "b577882cb3352307457e.sw-registration.js.map",
+      "name": "0162acfef104bbbb1c75.sw-registration.js.map",
       "size": 3731,
       "chunks": [
         1
@@ -390,7 +378,17 @@
       "emitted": false
     },
     {
-      "name": "style.0162acfef104bbbb1c75.css.map",
+      "name": "main.bundle.dev.js.map",
+      "size": 2767789,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ]
+    },
+    {
+      "name": "style.ed89cf76dafbf8bcc2ac.css.map",
       "size": 107,
       "chunks": [
         0
