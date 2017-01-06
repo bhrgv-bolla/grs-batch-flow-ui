@@ -98,7 +98,7 @@ class Home extends React.Component {
             </SwipeableViews>
           </div>
           <div>
-            <ForceFlowChart source={"/getGraphData"}></ForceFlowChart>
+            <ForceFlowChart source={"/getGraphData"} title={"Batch Flow Visualization"}></ForceFlowChart>
           </div>
         </div>
       </MuiThemeProvider>

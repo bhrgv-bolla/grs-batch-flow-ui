@@ -48,7 +48,8 @@ export default class ForceFlowChart extends React.Component {
   };
 
   showJobInfo(d) {
-    _this.handleOpen(JSON.stringify(d));
+    console.log("job",d);
+    _this.handleOpen(d);
     // window.alert(JSON.stringify(d));
   };
 
@@ -91,7 +92,7 @@ export default class ForceFlowChart extends React.Component {
     })).on("click", function(d) {
       toggleNodeLock(d, this);
     }).on("dblclick", function(d) {
-      _this.showJobInfo(d.otherInfo);
+      _this.showJobInfo(d);
     });
 
     //node.append("title").text(function(d){return d.id;});
@@ -165,7 +166,7 @@ export default class ForceFlowChart extends React.Component {
 
     return (
       <Paper style={style} zDepth={2} rounded={true}>
-        <h3>Batch Flow Viz.</h3>
+        <h3>{this.props.title}</h3>
         <div ref='hook'/>
         <Dialog
             title="ADDITIONAL JOB INFO"
@@ -176,7 +177,9 @@ export default class ForceFlowChart extends React.Component {
             autoScrollBodyContent={true}
             titleClassName={styles.titleText}
           >
-          {this.state.currentJobInfo}
+          {this.state.currentJobInfo.otherInfo}
+          <h3>Tags:</h3>
+          {this.state.currentJobInfo.tags}
         </Dialog>
       </Paper>
     );
