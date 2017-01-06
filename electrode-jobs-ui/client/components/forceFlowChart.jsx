@@ -91,7 +91,7 @@ export default class ForceFlowChart extends React.Component {
     })).on("click", function(d) {
       toggleNodeLock(d, this);
     }).on("dblclick", function(d) {
-      _this.showJobInfo(d);
+      _this.showJobInfo(d.otherInfo);
     });
 
     //node.append("title").text(function(d){return d.id;});

@@ -53,6 +53,12 @@ class AddJobForm extends React.Component {
             <Field name="group" component={renderTextField} label="Job Group"/>
           </div>
           <div>
+            <Field name="tags" component={renderTextField} label="Tags"/>
+          </div>
+          <div>
+            <Field name="otherInfo" component={renderTextField} label="Notes" multiLine={false} rows={1}/>
+          </div>
+          <div>
             <RaisedButton type="submit" primary={true} label="submit"/>
           </div>
         </form>

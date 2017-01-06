@@ -60,6 +60,8 @@ var addRoutesForNodes = (server) => {
       var job = new Job();
       job.id = request.payload.id;
       job.group = request.payload.group;
+      job.tags = request.payload.tags;
+      job.otherInfo = request.payload.otherInfo;
       job.save(function (err){
         if(!err){ //no error
           reply(job);//.created('/check')

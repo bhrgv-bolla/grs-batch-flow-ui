@@ -12,11 +12,16 @@ import Paper from 'material-ui/Paper';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 
-var addJob = (e) => axios.post('/upsert-job', e).then(function(response) {
+var addJob = (e) => {
+  console.log(e);
+  if(e.tags){
+    e.tags = e.tags.split(",");
+  }
+  return axios.post('/upsert-job', e).then(function(response) {
   console.log(response);
 }).catch(function(error) {
   console.log(error);
-});
+})};
 
 var addLink = (e) => axios.post('/upsert-link', e).then(function(response) {
   console.log(response);

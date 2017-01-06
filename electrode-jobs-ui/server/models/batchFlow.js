@@ -5,7 +5,9 @@ var Schema = Mongoose.Schema;
 var jobSchema = new Schema({
   id : {type: String, required: true, trim: true, unique: true},
   group : {type: String, required: true, trim: true},
-  dateUpdated : { type: Date, required: true, default: Date.now()}
+  dateUpdated : { type: Date, required: true, default: Date.now()},
+  tags: {type: Array, required: false},
+  otherInfo: {type: String, required: false}
 });
 
 //Link Schema
