@@ -1,6 +1,8 @@
 "use strict";
 
-global.navigator = {userAgent: "all"};
+global.navigator = {
+  userAgent: "all"
+};
 
 const SSRCaching = require("electrode-react-ssr-caching");
 
@@ -19,10 +21,9 @@ const supports = require("electrode-archetype-react-app/supports");
 
 var Mongoose = require('mongoose');
 //add connection ( For local mongo db for now. Change to repl set later.)
-Mongoose.connect('mongodb://localhost:27017/test');
+Mongoose.connect('mongodb://mongodb-replica-set-98399705-1-167418681.dev.mongodb.rbscm.dev.cloud.wal-mart.com:27017,mongodb-replica-set-98399705-3-167418687.dev.mongodb.rbscm.dev.cloud.wal-mart.com:27017,mongodb-replica-set-98399705-2-167418684.dev.mongodb.rbscm.dev.cloud.wal-mart.com:27017/test');
+//'mongodb://localhost:27017/test'
 //('mongodb://mongodb-replica-set-98399705-1-167418681.dev.mongodb.rbscm.dev.cloud.wal-mart.com:27017,mongodb-replica-set-98399705-3-167418687.dev.mongodb.rbscm.dev.cloud.wal-mart.com:27017,mongodb-replica-set-98399705-2-167418684.dev.mongodb.rbscm.dev.cloud.wal-mart.com:27017/test');
-
-
 
 require.extensions[".css"] = () => {
   return;
@@ -33,9 +34,7 @@ require.extensions[".css"] = () => {
  * in server mode, and also transpile react code to apply process.env.NODE_ENV
  * removal to improve performance in production mode.
  */
-supports.babelRegister({
-  ignore: /node_modules\/(?!react\/)/
-});
+supports.babelRegister({ignore: /node_modules\/(?!react\/)/});
 
 const cacheConfig = {
   components: {
@@ -65,10 +64,8 @@ SSRCaching.setCachingConfig(cacheConfig);
  * https://github.com/webpack/css-loader#local-scope
  * https://github.com/css-modules/postcss-modules-scope
  */
-supports.cssModuleHook({
-  generateScopedName: "[name]__[local]___[hash:base64:5]"
-});
+supports.cssModuleHook({generateScopedName: "[name]__[local]___[hash:base64:5]"});
 
 supports.isomorphicExtendRequire().then(() => {
-  require("electrode-server")(config, [staticPathsDecor()]);  // eslint-disable-line
+  require("electrode-server")(config, [staticPathsDecor()]); // eslint-disable-line
 });

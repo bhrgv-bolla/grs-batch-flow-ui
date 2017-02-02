@@ -1,7 +1,24 @@
 {
   "plugins": {
     "restMongo": {
-        "module": "./server/plugins/mongo_rest/rest.js"
+      "module": "./server/plugins/mongo_rest/rest.js"
+    },
+    "ssoPlugin": {
+      "module": "./server/plugins/iam-sso-plugin/integrate-iam-sso.js",
+      "options": {
+        "clientId": "de03f4c1-20e0-4a68-85dd-05e7881ff485",
+        "clientSecret": "AMzI4W12y8akuu20xu7IN4MU2rxjI9YdgW8QxQ-7t_lCowi8FEy1UBwjuVbMgJ6Dee8s3j8zEi9MO_sVDf4U4hc",
+        "idTokenPubPem": "fs.readFileSync('./sso.pem', 'utf8')",
+        "ssoBaseUrl": "idp.qa.sso.platform.qa.walmart.com/platform-sso-server",
+        "scope": "openid,email,profile",
+        "idp": "ppidp",
+        "consumerId": "replenishment-sso-client-test",
+        "consumerName": "replenishment-sso-client-test",
+        "environment": "qa",
+        "iamBaseBaseUrl": "iam2initial.iam2qa2.iam.platform.glb.qa.walmart.com",
+        "responseType": "code",
+        "authReturnPath": "/"
       }
+    }
   }
 }
