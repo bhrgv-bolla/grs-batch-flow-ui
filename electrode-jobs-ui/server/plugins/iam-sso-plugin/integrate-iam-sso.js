@@ -1,37 +1,41 @@
 const fs = require('fs');
 const ssoPlugin = require('@walmart/iam-sso-plugin/index.js');
-const ssoPem = {"kty":"RSA","e":"AQAB","use":"sig","kid":"adb181c4-52b8-409f-9855-7d6f50e6e793","alg":"RSA1_5","n":"uxky1Az1YUfmYmbcl-gjl6rCVE8oNUyLA9Px7Sr2PA-ebrubpjPBa4JZNEI2ysEu42O1O9KetZ_i7RFbRqoAZ6566oImDyu80w6J4pClJplMFlW3Q4QMEyBBohUhBMU6gDEM-QVgyN2K05H4pakeuLgiIzZ6ZhKyZVGyaDSQccs"};
+const ssoPem = {
+  "kty": "RSA",
+  "e": "AQAB",
+  "use": "sig",
+  "kid": "d816a007-418f-4d9a-9391-cbee300145d3",
+  "alg": "RSA1_5",
+  "n": "hZ690ozsSm6YSPNRGFISCWJp1e0rXHk5Aur08Asy-xqvNVeWXbjOOET8dX0HC8Jd7_IinHnGDYwSyfPJ-agVJBHVwzb3irdhwhNBNa7IErdLG5FdU0zwsye6XHd52MDLK1IIngVYUV8ch26sz5hQLnZgzDjEIgRTvbMuctYaEFU"
+};
 const jwk2pem = require('pem-jwk').jwk2pem
-
-console.log("debug point 1");
 
 exports.register = (server, options, next) => {
 
-  console.log("debug point 2");
+//Need to change consumer id and consumer name from below.
   server.register({
     register: ssoPlugin,
     options: {
-      clientId: 'de03f4c1-20e0-4a68-85dd-05e7881ff485',
-      clientSecret: 'AMzI4W12y8akuu20xu7IN4MU2rxjI9YdgW8QxQ-7t_lCowi8FEy1UBwjuVbMgJ6Dee8s3j8zEi9MO_sVDf4U4hc',
+      clientId: 'b4a3b917-e336-4a5e-a433-47bdb6a9f7fa',
+      clientSecret: 'TJw8dSPdtC00fEQo6qi4FUl41G_xM6fEkz_zKxUNJzAySsbaMnqQE9bvrr9RSrP35uDlZ4_T5m6paUW4QMC-Hg',
       idTokenPubPem: jwk2pem(ssoPem),
       ssoBaseUrl: 'idp.qa.sso.platform.qa.walmart.com/platform-sso-server',
       scope: 'openid email profile',
       idp: 'ppidp',
-      consumerId: 'replenishment-sso-client-test',
-      consumerName: 'replenishment-sso-client-test',
+      consumerId: '78d9b0eb-8de5-4262-8148-f3c13741913f',
+      consumerName: 'L-IDC3JHDV7M-M',
       environment: 'qa',
-      iamBaseBaseUrl: 'iam2initial.iam2qa2.iam.platform.glb.qa.walmart.com',
+      iamBaseBaseUrl: "qa.iam.platform.prod.walmart.com/platform-iam-server/",
       responseType: 'code',
-      authReturnPath: '/checkUser'
+      authReturnPath: '/checkUser',
+      verifyAuthTokenInterval: 1800
     }
-}, (err) => {
-    console.log("Regestering the plugin for iam/sso...");
+  }, (err) => {
     if (err) {
       throw err;
     }
-    console.log("logging strategy", server.auth.strategy);
 
-//auth endpoint.
+    //auth endpoint.
     server.route({
       method: 'GET',
       path: '/authorizeSSO',
@@ -43,19 +47,29 @@ exports.register = (server, options, next) => {
         }
       }
     });
-    server.route({
+    server.route({ //Send more user details..
       method: 'GET',
       path: '/checkUser',
       config: {
         handler: function rootHandler(request, reply) {
           console.log("authenticaiton", request.state, request.state['session']);
-          reply("Yo! are you authenticated");
+          var replyMessage = "Hello "+ request.state['session'].name+ "<br/>"+ JSON.stringify(request.state);
+          reply(replyMessage);//send the state.
         }
       }
     });
+
+    server.ext('onRequest', (request, reply) => {
+
+      //Here you have full access to the original request
+      console.log("PreResponse counter value: " , request.state, request.path);
+
+      return reply.continue();
+
+    });
+
   });
   //index route
-
 
   next();
 };
